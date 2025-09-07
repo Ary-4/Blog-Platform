@@ -1,7 +1,7 @@
 const Post = require('../models/Post');
 
-// CREATE post
-const createPost = async (req, res) => {
+
+const createPost = async (req, res) => {                                   // create post
   try {
     const { title, content } = req.body;
     const post = new Post({ title, content, author: req.user.id });
@@ -12,8 +12,8 @@ const createPost = async (req, res) => {
   }
 };
 
-// GET all posts
-const getPosts = async (req, res) => {
+
+const getPosts = async (req, res) => {                                        // get post
   try {
     const posts = await Post.find().populate('author', 'name email');
     res.json(posts);
@@ -22,8 +22,8 @@ const getPosts = async (req, res) => {
   }
 };
 
-// GET post by ID
-const getPostById = async (req, res) => {
+
+const getPostById = async (req, res) => {                                       //getbyid
   try {
     const post = await Post.findById(req.params.id).populate('author', 'name email');
     if (!post) return res.status(404).json({ message: 'Post not found' });
@@ -33,8 +33,8 @@ const getPostById = async (req, res) => {
   }
 };
 
-// UPDATE post
-const updatePost = async (req, res) => {
+
+const updatePost = async (req, res) => {                                          //update
   try {
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ message: 'Post not found' });
@@ -50,8 +50,8 @@ const updatePost = async (req, res) => {
   }
 };
 
-// DELETE post
-const deletePost = async (req, res) => {
+
+const deletePost = async (req, res) => {                                         // delete
   try {
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ message: 'Post not found' });

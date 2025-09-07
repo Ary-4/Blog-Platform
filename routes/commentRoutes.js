@@ -4,8 +4,8 @@ const { createComment, getCommentsByPost, deleteComment } = require('../controll
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', getCommentsByPost);          // GET all comments for a post
-router.post('/', protect, createComment);    // CREATE a comment for a post
-router.delete('/:id', protect, deleteComment); // DELETE a comment by its _id
+router.get('/', getCommentsByPost);          
+router.post('/', protect, createComment);    
+router.delete('/:id', protect, deleteComment); 
 
 module.exports = router;
